@@ -129,7 +129,10 @@ def confirm():
         text = wm_entry.get()
 
         font = ImageFont.truetype(FONT_NAME, SIZE)
-        textwidth, textheight = draw.textsize(text, font)
+        txt_size = draw.textbbox((0,0), text, font)
+        textheight = txt_size[3]
+        textwidth = txt_size[2] - txt_size[0]
+        
         # calculate the x,y coordinates of the text
         margin = 10
         x = width - textwidth - margin
